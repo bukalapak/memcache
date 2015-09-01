@@ -176,7 +176,6 @@ static VALUE escape_key(VALUE key, bool* escaped) {
   } else {
     if (escaped) *escaped = true;
     key = rb_str_buf_new(new_len);
-    RSTRING_SET_LEN(key, new_len);
     new_str = RSTRING_PTR(key);
 
     for (i = 0, j = 0; i < len; i++, j++) {
@@ -215,8 +214,6 @@ static VALUE unescape_key(const char* str, uint16_t len) {
     key = rb_str_new(str, len);
   } else {
     key = rb_str_buf_new(new_len);
-    RSTRING_SET_LEN(key, new_len);
-    new_str = RSTRING_PTR(key);
 
     for (i = 0, j = 0; i < len; j++, i++) {
       if (str[i] == '\\') {
