@@ -156,7 +156,7 @@ static VALUE mc_initialize(VALUE self, VALUE opts) {
 #if defined(RUBY_19) || defined(RUBY_20)
 #define RSTRING_SET_LEN(str, newlen) (rb_str_set_len(str, new_len))
 #else
-#define RSTRING_SET_LEN(str, newlen) (RSTRING(str)->len = new_len)
+#define RSTRING_SET_LEN(str, newlen) (RSTRING_LEN(str) = new_len)
 #endif
 
 static VALUE escape_key(VALUE key, bool* escaped) {
